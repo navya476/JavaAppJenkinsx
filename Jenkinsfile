@@ -16,8 +16,6 @@ spec:
   containers:
   - name: docker-dind
     image: docker:dind
-    command:  ["sh"]
-    args: ["-c","dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock "]
     tty: true 
     securityContext:
       privileged: true
