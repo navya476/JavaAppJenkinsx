@@ -1,7 +1,4 @@
 pipeline {
-  options {
-    disableConcurrentBuilds()
-  }
   agent {
     kubernetes {
       label "module-1"
@@ -16,6 +13,9 @@ spec:
   containers:
   - name: docker-dind
     image: docker:dind
+    tty: true
+    securityContext:
+      privileged: true
 """
     }
   }
