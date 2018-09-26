@@ -16,27 +16,19 @@ spec:
   containers:
   - name: docker-dind
     image: docker:dind
-    tty: true 
-    securityContext:
-      privileged: true
 """
     }
   }
-  environment {
-    DEPLOY_NAMESPACE = "production"
-  }
   stages {
-			stage('Build') {
-				
-				steps {
-				  container('docker-dind') {
-						  
-					 sh '''
-                     docker build -t config-server .
-					 '''
-				   }
-				   }
-				   }
-  }
+   stage('Build') {
+     steps {
+       container('docker-dind') {
+         sh '''
+            docker build -t config-server .
+	 '''
+	  }
+	 }
+       }
+     }
   
   }
